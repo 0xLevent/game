@@ -1,0 +1,118 @@
+body {
+    margin: 0;
+    overflow: hidden;
+    background: url('backgorung.png') no-repeat center center fixed;
+    background-size: cover;
+    text-align: center;
+    color: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+
+#connectWallet {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    padding: 12px 20px;
+    background: linear-gradient(135deg, #ffcc00, #ffa500);
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+#connectWallet:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+}
+
+#leaderboard {
+    position: absolute;
+    top: 80px;
+    left: 15px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    padding: 15px;
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    max-width: 250px;
+}
+
+#leaderboard h2 {
+    margin-bottom: 10px;
+    color: #ffcc00;
+    font-size: 20px;
+}
+
+#leaderboard ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+#leaderboard li {
+    background: rgba(0, 0, 0, 0.3);
+    margin-bottom: 5px;
+    padding: 10px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#gameContainer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+button {
+    padding: 15px 30px;
+    font-size: 20px;
+    cursor: pointer;
+    background: linear-gradient(135deg, #ffcc00, #ffa500);
+    border: none;
+    border-radius: 30px;
+    margin: 15px;
+    font-weight: bold;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
+}
+
+#restartGame {
+    display: none;
+}
+
+canvas {
+    display: block;
+    margin: auto;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    border-radius: 15px;
+}
+
+@media (max-width: 768px) {
+    #leaderboard {
+        max-width: 200px;
+        top: 60px;
+        left: 10px;
+    }
+
+    button {
+        padding: 12px 24px;
+        font-size: 16px;
+    }
+}
