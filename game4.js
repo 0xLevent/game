@@ -60,7 +60,7 @@ document.getElementById("restartGame").addEventListener("click", () => {
     speed = -150;
     speedMultiplier = 1;
     gameOverFlag = false;
-    gameStarted = false;
+    gameStarted = true;
     game = new Phaser.Game(config);
 });
 
