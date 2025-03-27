@@ -64,6 +64,7 @@ body {
 }
 
 #gameContainer {
+    background: url('/assets/image.jpeg') no-repeat center center fixed;
     position: absolute;
     top: 0;
     left: 0;
