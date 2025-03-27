@@ -21,10 +21,10 @@ const config = {
     scene: { preload, create, update }
 };
 
-let game, player, cursors, spaceKey, obstacles, background, rings;
+let game, player, cursors, spaceKey, obstacles, background, blends;
 let score = 0;
-let ringCount = 0;
-let scoreText, ringCountText;
+let blendCount = 0;
+let scoreText, blendCountText;
 let speed = -150;
 let speedMultiplier = 1;
 let gameOverFlag = false;
@@ -37,7 +37,7 @@ function preload() {
     this.load.image('player', 'assets/player.png'); 
     this.load.image('obstacle', 'assets/obstacle.png');
     this.load.image('ground', 'assets/ground.png');
-    this.load.image('ring', 'assets/ring.png');
+    this.load.image('blend', 'assets/ring.png');
 }
 
 document.getElementById("startGame").addEventListener("click", () => {
@@ -57,7 +57,7 @@ document.getElementById("restartGame").addEventListener("click", () => {
     }
     document.getElementById("restartGame").style.display = "none";
     score = 0;
-    ringCount = 0;
+    blendCount = 0;
     speed = -150;
     speedMultiplier = 1;
     gameOverFlag = false;
@@ -95,8 +95,8 @@ function create() {
     obstacles = this.physics.add.group();
     this.physics.add.overlap(player, obstacles, gameOver, null, this);
 
-    rings = this.physics.add.group();
-    this.physics.add.overlap(player, rings, collectRing, null, this);
+    blends = this.physics.add.group();
+    this.physics.add.overlap(player, blends, collectBlend, null, this);
 
     this.time.addEvent({
         delay: 2000,
@@ -107,7 +107,7 @@ function create() {
 
     this.time.addEvent({
         delay: 3000,
-        callback: spawnRing,
+        callback: spawnBlend,
         callbackScope: this,
         loop: true
     });
@@ -119,7 +119,7 @@ function create() {
         fill: '#FFF' 
     });
 
-    ringCountText = this.add.text(16, 56, 'Rings: 0', { 
+    blendCountText = this.add.text(16, 56, 'Blends: 0', { 
         fontSize: '32px', 
         fill: '#FFF' 
     });
@@ -158,7 +158,7 @@ function spawnObstacle() {
     });
 }
 
-function spawnRing() {
+function spawnBlend() {
     if (!gameStarted || gameOverFlag) return;
 
     let minY = window.innerHeight - 350;
@@ -166,28 +166,28 @@ function spawnRing() {
 
     let randomY = Phaser.Math.Between(minY, maxY);
     
-    let ring = rings.create(
+    let blend = blends.create(
         window.innerWidth + 100, 
         randomY, 
-        'ring'
+        'blend'
     ).setScale(0.4);
 
-    ring.setVelocityX(speed);
-    ring.body.allowGravity = false;
-    ring.setCollideWorldBounds(false);
+    blend.setVelocityX(speed);
+    blend.body.allowGravity = false;
+    blend.setCollideWorldBounds(false);
     
     this.time.delayedCall(10000, () => {
-        if (ring.active) {
-            ring.destroy();
+        if (blend.active) {
+            blend.destroy();
         }
     });
 }
 
-function collectRing(player, ring) {
-    ring.disableBody(true, true);
+function collectBlend(player, blend) {
+    blend.disableBody(true, true);
     
-    ringCount++;
-    ringCountText.setText('Blends: ' + ringCount);
+    blendCount++;
+    blendCountText.setText('Blends: ' + blendCount);
 
     score += 100;
     scoreText.setText('Score: ' + score);
@@ -200,8 +200,8 @@ function collectRing(player, ring) {
             obstacle.setVelocityX(speed);
         });
 
-        rings.getChildren().forEach((ring) => {
-            ring.setVelocityX(speed);
+        blends.getChildren().forEach((blend) => {
+            blend.setVelocityX(speed);
         });
     }
 }
@@ -246,7 +246,7 @@ function saveScore() {
     if (score > 0) {
         let scoreEntry = {
             score: score,
-            rings: ringCount,
+            blends: blendCount,
             speedMultiplier: speedMultiplier
         };
         
