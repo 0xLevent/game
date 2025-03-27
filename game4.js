@@ -187,7 +187,7 @@ function collectRing(player, ring) {
     ring.disableBody(true, true);
     
     ringCount++;
-    ringCountText.setText('Rings: ' + ringCount);
+    ringCountText.setText('Blends: ' + ringCount);
 
     score += 100;
     scoreText.setText('Score: ' + score);
