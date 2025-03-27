@@ -42,6 +42,7 @@ function preload() {
 
 document.getElementById("startGame").addEventListener("click", () => {
     if (!gameStarted) {
+        document.getElementById("gameContainer").style.backgroundImage = 'none';
         document.getElementById("startGame").style.display = "none";
         setTimeout(() => {
             game = new Phaser.Game(config);

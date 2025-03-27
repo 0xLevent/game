@@ -3,9 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Ontegrity Run</title>
+    <title>Tectra Run</title>
     <script src="https://cdn.jsdelivr.net/npm/phaser@3.55.2/dist/phaser.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+    <style>
+        body {
+            background-image: url('image.jpeg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+        }
+
+        /* Optional: Add some transparency to other elements to make background more visible */
+        header, main {
+            background-color: rgba(255, 255, 255, 0.7);
+        }
+    </style>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -19,13 +36,13 @@
             <button id="startGame">Start Game</button>
             <button id="restartGame" style="display:none;">Play Again</button>
         </div>
-
+        
         <aside id="leaderboard">
             <h2>Leaderboard</h2>
             <ul id="scores"></ul>
         </aside>
     </main>
-
+    
     <script src="game4.js"></script>
 </body>
 </html>
